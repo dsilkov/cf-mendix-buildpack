@@ -263,6 +263,7 @@ def update_config(m2ee, app_name):
     if _get_appmetrics_target() is not None:
         try:
             http_configs = json.loads(_get_appmetrics_target())
+            http_configs["Azure_Container_Name"]=_write_aai_output_config()
         except TypeError as e:
             logger.error(
                 "APPMETRICS_TARGET not in JSON format"
