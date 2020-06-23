@@ -258,12 +258,13 @@ def update_config(m2ee, app_name):
     _write_mendix_admin_http_input_config("server_statistics", "runtime_threads", "feedback.threadpool", ["threads"])
     _write_mendix_admin_http_input_config("server_statistics", "runtime_connections", "feedback.jetty", ["current_connections"])
     _write_mendix_admin_http_input_config("get_logged_in_user_names", "runtime_loggedinusers", "feedback", ["count"])
-
+    
+    logger.debug("BuildPack: %s",buildpackutil.get_hostname())
     # # Write http_outputs (one or array)
     if _get_appmetrics_target() is not None:
         try:
             http_configs = json.loads(_get_appmetrics_target())
-            http_configs["Azure_Container_Name"]=_write_aai_output_config()
+            http_configs["Azure_Container_Name"]=buildpackutil.get_hostname()
         except TypeError as e:
             logger.error(
                 "APPMETRICS_TARGET not in JSON format"
