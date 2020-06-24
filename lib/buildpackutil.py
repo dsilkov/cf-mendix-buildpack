@@ -29,6 +29,10 @@ def get_vcap_data():
             "application_name": "My App",
         }
 
+#Added by Arif for App Insights
+def get_container_name():
+    return (os.environ["APPNAMESPACE"]+"-Leader" if os.getenv("CF_INSTANCE_INDEX", "")=="0" else os.environ["APPNAMESPACE"]+"-Slave")
+
 
 def appdynamics_used():
     for k, v in os.environ.items():

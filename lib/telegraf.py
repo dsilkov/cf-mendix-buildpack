@@ -83,7 +83,7 @@ def _config_value_str(value):
 
 def _create_config_file(agent_config):
     logger.debug("writing config file")
-    logger.debug("BuildPack test arif: %s" % os.environ["APPNAMESPACE"])
+    logger.debug("BuildPack test arif: %s" % get_container_name())
     with open(".local/telegraf/etc/telegraf/telegraf.conf", "w") as tc:
         print("[agent]", file=tc)
         for item in agent_config:
@@ -260,7 +260,7 @@ def update_config(m2ee, app_name):
     _write_mendix_admin_http_input_config("server_statistics", "runtime_connections", "feedback.jetty", ["current_connections"])
     _write_mendix_admin_http_input_config("get_logged_in_user_names", "runtime_loggedinusers", "feedback", ["count"])
 
-    logger.debug("BuildPack test arif: %s" % os.environ["APPNAMESPACE"])
+    logger.debug("BuildPack test arif: %s" % get_container_name())
     # # Write http_outputs (one or array)
     if _get_appmetrics_target() is not None:
         try:
