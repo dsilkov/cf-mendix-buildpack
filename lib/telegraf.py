@@ -83,6 +83,7 @@ def _config_value_str(value):
 
 def _create_config_file(agent_config):
     logger.debug("writing config file")
+    logger.debug("BuildPack: %s" % buildpackutil.get_hostname())
     with open(".local/telegraf/etc/telegraf/telegraf.conf", "w") as tc:
         print("[agent]", file=tc)
         for item in agent_config:
