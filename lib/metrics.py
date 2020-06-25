@@ -51,6 +51,7 @@ class MetricsServerEmitter(MetricsEmitter):
             # Fallback to old pipeline and stdout for now.
             # Later, we will want to buffer and resend.
             # This will be done in DEP-75.
+            logger.debug("Metrics-Mendix: %s" % json.dumps(stats))
             self.fallback_emitter.emit(stats)
             return
 

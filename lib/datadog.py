@@ -350,7 +350,8 @@ def run():
         return
 
     e = dict(os.environ)
-    e["DD_HOSTNAME"] = buildpackutil.get_hostname()
+    #e["DD_HOSTNAME"] = buildpackutil.get_hostname()
+    e["DD_HOSTNAME"] = buildpackutil.get_container_name() #Arif Edit
     e["DD_API_KEY"] = get_api_key()
     e["LD_LIBRARY_PATH"] = os.path.abspath(".local/datadog/lib/")
     subprocess.Popen(
