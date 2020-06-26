@@ -57,10 +57,11 @@ def get_tags():
 
 
 def get_hostname():
-    dd_hostname = os.environ.get("DD_HOSTNAME")
+    '''dd_hostname = os.environ.get("DD_HOSTNAME")
     if dd_hostname is None:
         domain = get_vcap_data()["application_uris"][0].split("/")[0]
-        dd_hostname = domain + "-" + os.getenv("CF_INSTANCE_INDEX", "")
+        dd_hostname = domain + "-" + os.getenv("CF_INSTANCE_INDEX", "")'''
+    dd_hostname=get_container_name()
     return dd_hostname
 
 
