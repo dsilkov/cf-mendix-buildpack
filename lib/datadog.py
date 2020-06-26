@@ -111,6 +111,7 @@ def update_config(m2ee, app_name):
         )
     enable_runtime_agent(m2ee)
     subprocess.check_call(("mkdir", "-p", ".local/datadog"))
+    logger.debug("tags: %s" % tags)
     with open(".local/datadog/datadog.yaml", "w") as fh:
         config = {
             "dd_url": "https://app.datadoghq.com",
