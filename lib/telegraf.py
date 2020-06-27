@@ -67,6 +67,7 @@ def _get_tags():
                     kv[0]
                 )
             )
+    tags["container_name"]=buildpackutil.get_container_name()
     return tags
 
 
