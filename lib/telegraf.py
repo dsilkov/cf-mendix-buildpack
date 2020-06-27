@@ -96,7 +96,7 @@ def _create_config_file(agent_config):
 
 def _write_config(section, config):
     logger.debug("writing section {}".format(section))
-    with open(".local/telegraf/etc/telegraf/telegraf.conf", "a") as tc:
+    with open(".local/telegraf/etc/telegraf/telegraf.conf", "a+") as tc:
         _write_config_in_fd(section, config, tc)
 
 
@@ -114,6 +114,10 @@ def _write_config_in_fd(section, config, fd, indent=""):
             )
 
     print("", file=fd)
+    #Arif addition
+    fd.seek(0)
+    logger.debug("File Content: %s" % fd.read())
+        
 
 def _write_http_output_config(http_config):
     logger.debug("writing http output config")
