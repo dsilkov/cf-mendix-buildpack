@@ -210,7 +210,8 @@ def update_config(m2ee, app_name):
             "precision": "",
             "debug": False,
             "logfile": "",
-            "hostname": "test1", #buildpackutil.get_hostname(),
+            "hostname": buildpackutil.get_hostname(),
+            "container_name": buildpackutil.get_hostname(),
             "omit_hostname": False,
         }
     )
