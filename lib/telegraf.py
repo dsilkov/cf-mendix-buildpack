@@ -93,8 +93,8 @@ def _create_config_file(agent_config):
 
         print("", file=tc)
         #Arif addition
-        tc.seek(0)
-        logger.debug("File Content: %s" % tc.read())
+        #tc.seek(0)
+        #logger.debug("File Content: %s" % tc.read())
 
 
 def _write_config(section, config):
