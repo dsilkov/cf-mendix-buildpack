@@ -35,7 +35,7 @@ def get_container_name():
     return (os.environ["APPNAMESPACE"]+"-Leader" if os.getenv("CF_INSTANCE_INDEX", "")=="0" else os.environ["APPNAMESPACE"]+"-Slave")
 
 def get_app_name():
-    logger.debug("Getting app name.")
+    logger.debug("Getting app name: %s" % os.environ["APPNAMESPACE"])
     return (os.environ["APPNAMESPACE"])
 
 def appdynamics_used():
