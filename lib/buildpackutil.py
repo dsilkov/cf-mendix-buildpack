@@ -31,9 +31,11 @@ def get_vcap_data():
 
 #Added by Arif for App Insights
 def get_container_name():
+    logger.debug("Getting container name.")
     return (os.environ["APPNAMESPACE"]+"-Leader" if os.getenv("CF_INSTANCE_INDEX", "")=="0" else os.environ["APPNAMESPACE"]+"-Slave")
 
 def get_app_name():
+    logger.debug("Getting app name.")
     return (os.environ["APPNAMESPACE"])
 
 def appdynamics_used():
@@ -59,11 +61,10 @@ def get_tags():
 
 
 def get_hostname():
-    '''dd_hostname = os.environ.get("DD_HOSTNAME")
+    dd_hostname = os.environ.get("DD_HOSTNAME")
     if dd_hostname is None:
         domain = get_vcap_data()["application_uris"][0].split("/")[0]
-        dd_hostname = domain + "-" + os.getenv("CF_INSTANCE_INDEX", "")'''
-    dd_hostname=get_container_name()
+        dd_hostname = domain + "-" + os.getenv("CF_INSTANCE_INDEX", "")
     return dd_hostname
 
 

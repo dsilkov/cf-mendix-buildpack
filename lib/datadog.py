@@ -111,7 +111,6 @@ def update_config(m2ee, app_name):
         )
     enable_runtime_agent(m2ee)
     subprocess.check_call(("mkdir", "-p", ".local/datadog"))
-    logger.debug("tags: %s" % tags)
     with open(".local/datadog/datadog.yaml", "w") as fh:
         config = {
             "dd_url": "https://app.datadoghq.com",
@@ -351,8 +350,7 @@ def run():
         return
 
     e = dict(os.environ)
-    #e["DD_HOSTNAME"] = buildpackutil.get_hostname()
-    e["DD_HOSTNAME"] = buildpackutil.get_container_name() #Arif Edit
+    e["DD_HOSTNAME"] = buildpackutil.get_hostname()
     e["DD_API_KEY"] = get_api_key()
     e["LD_LIBRARY_PATH"] = os.path.abspath(".local/datadog/lib/")
     subprocess.Popen(

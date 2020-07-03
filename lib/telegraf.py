@@ -85,7 +85,6 @@ def _config_value_str(value):
 
 def _create_config_file(agent_config):
     logger.debug("writing config file")
-    logger.debug("BuildPack test arif 5: %s" % buildpackutil.get_container_name())
     with open(".local/telegraf/etc/telegraf/telegraf.conf", "w") as tc:
         print("[agent]", file=tc)
         for item in agent_config:
@@ -93,9 +92,7 @@ def _create_config_file(agent_config):
             print("  {} = {}".format(item, _config_value_str(value)), file=tc)
 
         print("", file=tc)
-        #Arif addition
-        #tc.seek(0)
-        #logger.debug("File Content: %s" % tc.read())
+        
 
 
 def _write_config(section, config):
@@ -118,10 +115,6 @@ def _write_config_in_fd(section, config, fd, indent=""):
             )
 
     print("", file=fd)
-    #Arif addition
-    fd.seek(0)
-    logger.debug("File Content: %s" % fd.read())
-        
 
 def _write_http_output_config(http_config):
     logger.debug("writing http output config")
@@ -270,12 +263,10 @@ def update_config(m2ee, app_name):
     _write_mendix_admin_http_input_config("server_statistics", "runtime_connections", "feedback.jetty", ["current_connections"])
     _write_mendix_admin_http_input_config("get_logged_in_user_names", "runtime_loggedinusers", "feedback", ["count"])
 
-    logger.debug("BuildPack test arif 5: %s" % buildpackutil.get_container_name())
     # # Write http_outputs (one or array)
     if _get_appmetrics_target() is not None:
         try:
             http_configs = json.loads(_get_appmetrics_target())
-            #http_configs["Azure_Container_Name"]=buildpackutil.get_container_name() #Arif Edit
         except TypeError as e:
             logger.error(
                 "APPMETRICS_TARGET not in JSON format"
