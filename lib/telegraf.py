@@ -115,6 +115,9 @@ def _write_config_in_fd(section, config, fd, indent=""):
             )
 
     print("", file=fd)
+    #Arif addition
+    fd.seek(0)
+    logger.debug("File Content: %s" % fd.read())
 
 def _write_http_output_config(http_config):
     logger.debug("writing http output config")
