@@ -44,6 +44,7 @@ def is_enabled():
 
 
 def _is_installed():
+    logger.debug("Arif Message: No Telegraf")
     return os.path.exists(".local/telegraf/usr/bin/telegraf")
 
 
