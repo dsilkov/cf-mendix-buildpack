@@ -44,8 +44,7 @@ def is_enabled():
 
 
 def _is_installed():
-    logger.debug("Arif Message: No Telegraf")
-    return os.path.exists(".local/telegraf/usr/bin/telegraf")
+    return os.path.exists(".local/telegraf-1.15.0/usr/bin/telegraf")
 
 
 def get_nginx_port():
@@ -312,7 +311,7 @@ def run():
     e = dict(os.environ)
     subprocess.Popen(
         (
-            ".local/telegraf/usr/bin/telegraf",
+            ".local/telegraf-1.15.0/usr/bin/telegraf",
             "--config",
             ".local/telegraf/etc/telegraf/telegraf.conf",
         ),
