@@ -44,7 +44,7 @@ def is_enabled():
 
 
 def _is_installed():
-    logger.debug(".local/telegraf-1.15.0/usr/bin/telegraf exists value:" % os.path.exists(".local/telegraf-1.15.0/usr/bin/telegraf"))
+    logger.debug(".local/telegraf-1.15.0/usr/bin/telegraf exists value: %s" % os.path.exists(".local/telegraf-1.15.0/usr/bin/telegraf"))
     return os.path.exists(".local/telegraf-1.15.0/usr/bin/telegraf")
 
 
