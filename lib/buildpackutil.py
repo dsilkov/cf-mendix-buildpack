@@ -31,11 +31,11 @@ def get_vcap_data():
 
 #Added by Arif for App Insights
 def get_container_name():
-    logger.debug("Getting container name.")
+    logging.debug("Getting container name.")
     return (os.environ["APPNAMESPACE"]+"-Leader" if os.getenv("CF_INSTANCE_INDEX", "")=="0" else os.environ["APPNAMESPACE"]+"-Slave")
 
 def get_app_name():
-    logger.debug("Getting app name: %s" % os.environ["APPNAMESPACE"])
+    logging.debug("Getting app name.")
     return (os.environ["APPNAMESPACE"])
 
 def appdynamics_used():
