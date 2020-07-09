@@ -44,8 +44,8 @@ def is_enabled():
 
 
 def _is_installed():
-    logger.debug(".local/telegraf-1.15.0/usr/bin/telegraf exists value: %s" % os.path.exists(".local/telegraf-1.15.0/usr/bin/telegraf"))
-    return os.path.exists(".local/telegraf-1.15.0/usr/bin/telegraf")
+    logger.debug("Telegraf file Path: .local/telegraf-1.16.0/usr/bin/telegraf ")
+    return os.path.exists(".local/telegraf-1.16.0/usr/bin/telegraf")
 
 
 def get_nginx_port():
@@ -86,7 +86,7 @@ def _config_value_str(value):
 
 def _create_config_file(agent_config):
     logger.debug("writing config file")
-    with open(".local/telegraf-1.15.0/etc/telegraf/telegraf.conf", "w") as tc:
+    with open(".local/telegraf-1.16.0/etc/telegraf/telegraf.conf", "w") as tc:
         print("[agent]", file=tc)
         for item in agent_config:
             value = agent_config[item]
@@ -98,7 +98,7 @@ def _create_config_file(agent_config):
 
 def _write_config(section, config):
     logger.debug("writing section {}".format(section))
-    with open(".local/telegraf-1.15.0/etc/telegraf/telegraf.conf", "a+") as tc:
+    with open(".local/telegraf-1.16.0/etc/telegraf/telegraf.conf", "a+") as tc:
         _write_config_in_fd(section, config, tc)
 
 
@@ -312,9 +312,9 @@ def run():
     e = dict(os.environ)
     subprocess.Popen(
         (
-            ".local/telegraf-1.15.0/usr/bin/telegraf",
+            ".local/telegraf-1.16.0/usr/bin/telegraf",
             "--config",
-            ".local/telegraf-1.15.0/etc/telegraf/telegraf.conf",
+            ".local/telegraf-1.16.0/etc/telegraf/telegraf.conf",
         ),
         env=e,
     )
