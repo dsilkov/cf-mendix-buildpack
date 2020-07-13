@@ -122,6 +122,16 @@ def download_and_unpack(url, destination, cache_dir="/tmp/downloads"):
         )
     )
 
+    fName =""
+    if "telegraf-nightly_linux_amd64" in file_name:
+        dirLst = os.listdir("/build/.local")
+        for curDir in dirLst:
+            if "telegraf" in curDir:
+                fName = "/build/.local/"+curDir
+                logging.debug("telegraf file name: {t_file_name}".format(t_file_name=fName))
+                #os.rename(fName,"/build/.local/telegraf")
+
+
 
 def mkdir_p(path):
     try:

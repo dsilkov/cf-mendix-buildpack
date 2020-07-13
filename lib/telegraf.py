@@ -44,7 +44,6 @@ def is_enabled():
 
 
 def _is_installed():
-    logger.debug("Telegraf file Path: .local/telegraf-1.16.0/usr/bin/telegraf ")
     return os.path.exists(".local/telegraf-1.16.0/usr/bin/telegraf")
 
 
@@ -116,9 +115,6 @@ def _write_config_in_fd(section, config, fd, indent=""):
             )
 
     print("", file=fd)
-    #Arif addition
-    fd.seek(0)
-    logger.debug("File Content: %s" % fd.read())
 
 def _write_http_output_config(http_config):
     logger.debug("writing http output config")
@@ -152,8 +148,6 @@ def _write_http_output_config(http_config):
     kpionly = http_config["kpionly"] if "kpionly" in http_config else True
     if kpionly:
         http_output["[outputs.http.tagpass]"] = {"KPI": ["true"]}
-
-    logger.debug("http_output: %s" % http_output)
     _write_config("[[outputs.http]]", http_output)
 
 
