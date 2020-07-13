@@ -129,7 +129,8 @@ def download_and_unpack(url, destination, cache_dir="/tmp/downloads"):
             if "telegraf" in curDir:
                 fName = "/build/.local/"+curDir
                 logging.debug("telegraf file name: {t_file_name}".format(t_file_name=fName))
-                #os.rename(fName,"/build/.local/telegraf")
+                os.rename(fName,"/build/.local/telegraf")
+                logging.debug("Successfully changed folder name to telegraf.")
 
 
 
