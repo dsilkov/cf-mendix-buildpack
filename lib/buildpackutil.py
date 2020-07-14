@@ -32,7 +32,7 @@ def get_vcap_data():
 #Added by Arif for App Insights
 def get_container_name():
     logging.debug("Getting container name.")
-    return (os.environ["APPNAMESPACE"]+"-Leader" if os.getenv("CF_INSTANCE_INDEX", "")=="0" else os.environ["APPNAMESPACE"]+"-Slave")
+    return (os.environ["APPNAMESPACE"]+"-leader" if os.getenv("CF_INSTANCE_INDEX", "")=="0" else os.environ["APPNAMESPACE"]+"-slave")
 
 def get_app_name():
     logging.debug("Getting app name.")
