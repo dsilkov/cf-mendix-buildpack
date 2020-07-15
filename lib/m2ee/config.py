@@ -188,7 +188,7 @@ class M2EEConfig:
         # replace 'MicroflowConstants' with mfconstants we just figured out
         # before to prevent dict-deepmerge-problems
         merge_config['MicroflowConstants'] = merge_constants
-        logger.trace("Replacing 'MicroflowConstants' with constants we just "
+        logger.debug("Replacing 'MicroflowConstants' with constants we just "
                      "figured out: %s" % merge_constants)
         # the merged result will be put back into self._conf['mxruntime']
         logger.debug("Merged runtime configuration: %s" % merge_config)
@@ -884,6 +884,8 @@ class M2EEConfig:
             in self._model_metadata['Constants']
         ]
         yaml_constants = list(self._conf['mxruntime']['MicroflowConstants'].keys())
+        '''for val in yaml_constants:
+            logger.debug()'''
 
         missing = [m for m in model_constants if m not in yaml_constants]
         if missing:

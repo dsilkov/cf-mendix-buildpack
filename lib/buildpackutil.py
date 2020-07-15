@@ -29,6 +29,14 @@ def get_vcap_data():
             "application_name": "My App",
         }
 
+#Added by Arif for App Insights
+def get_container_name():
+    logging.debug("Getting container name.")
+    return (os.environ["APPNAMESPACE"]+"-leader" if os.getenv("CF_INSTANCE_INDEX", "")=="0" else os.environ["APPNAMESPACE"]+"-slave")
+
+def get_app_name():
+    logging.debug("Getting app name.")
+    return (os.environ["APPNAMESPACE"])
 
 def appdynamics_used():
     for k, v in os.environ.items():
@@ -113,6 +121,17 @@ def download_and_unpack(url, destination, cache_dir="/tmp/downloads"):
             file_name=file_name, destination=destination
         )
     )
+
+    fName =""
+    if "telegraf-nightly_linux_amd64" in file_name:
+        dirLst = os.listdir("/build/.local")
+        for curDir in dirLst:
+            if "telegraf" in curDir:
+                fName = "/build/.local/"+curDir
+                logging.debug("telegraf file name: {t_file_name}".format(t_file_name=fName))
+                os.rename(fName,"/build/.local/telegraf")
+                logging.debug("Successfully changed folder name to telegraf.")
+
 
 
 def mkdir_p(path):

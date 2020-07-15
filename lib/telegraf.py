@@ -67,6 +67,8 @@ def _get_tags():
                     kv[0]
                 )
             )
+    tags["container_name"]=buildpackutil.get_container_name()
+    tags["app_name"]=buildpackutil.get_app_name()
     return tags
 
 
@@ -90,11 +92,12 @@ def _create_config_file(agent_config):
             print("  {} = {}".format(item, _config_value_str(value)), file=tc)
 
         print("", file=tc)
+        
 
 
 def _write_config(section, config):
     logger.debug("writing section {}".format(section))
-    with open(".local/telegraf/etc/telegraf/telegraf.conf", "a") as tc:
+    with open(".local/telegraf/etc/telegraf/telegraf.conf", "a+") as tc:
         _write_config_in_fd(section, config, tc)
 
 
@@ -145,7 +148,6 @@ def _write_http_output_config(http_config):
     kpionly = http_config["kpionly"] if "kpionly" in http_config else True
     if kpionly:
         http_output["[outputs.http.tagpass]"] = {"KPI": ["true"]}
-
     _write_config("[[outputs.http]]", http_output)
 
 

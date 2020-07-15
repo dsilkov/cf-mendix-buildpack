@@ -636,6 +636,7 @@ def is_development_mode():
 
 
 def set_runtime_config(metadata, mxruntime_config, vcap_data, m2ee):
+    logger.debug("metadat: %s, mxruntime_config: %s" % (json.dumps(metadata) , json.dumps(mxruntime_config)))
     scheduled_event_execution, my_scheduled_events = get_scheduled_events(
         metadata
     )
