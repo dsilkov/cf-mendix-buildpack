@@ -67,8 +67,9 @@ def _get_tags():
                     kv[0]
                 )
             )
-    tags["container_name"]=buildpackutil.get_container_name()
-    tags["app_name"]=buildpackutil.get_app_name()
+    if os.getenv("CF_INSTANCE_INDEX") is not None and "APPNAMESPACE" in os.environ:
+        tags["container_name"]=buildpackutil.get_container_name()
+        tags["app_name"]=buildpackutil.get_app_name()
     return tags
 
 
