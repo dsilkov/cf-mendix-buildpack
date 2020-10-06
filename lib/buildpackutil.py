@@ -125,7 +125,7 @@ def download_and_unpack(url, destination, cache_dir="/tmp/downloads"):
     )
 
     fName =""
-    if "telegraf-nightly_linux_amd64" in file_name:
+    if "telegraf-1.15.3_linux_amd64" in file_name:
         dirLst = os.listdir("/build/.local")
         for curDir in dirLst:
             if "telegraf" in curDir:
