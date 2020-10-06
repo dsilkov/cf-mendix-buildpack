@@ -287,7 +287,8 @@ def compile(install_path, cache_dir):
     # AppMetrics target
     datadog.download(install_path, cache_dir)
 
-    buildpackutil.download_and_unpack("https://dl.influxdata.com/telegraf/nightlies/telegraf-nightly_linux_amd64.tar.gz",
+    #buildpackutil.download_and_unpack("https://dl.influxdata.com/telegraf/nightlies/telegraf-nightly_linux_amd64.tar.gz",
+    buildpackutil.download_and_unpack("https://dl.influxdata.com/telegraf/releases/telegraf-1.15.3_linux_amd64.tar.gz",
         install_path,
         cache_dir=cache_dir,
     )
