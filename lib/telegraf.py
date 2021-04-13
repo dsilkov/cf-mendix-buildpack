@@ -278,6 +278,7 @@ def update_config(m2ee, app_name):
         else:
             _write_http_output_config(http_configs)
 
+
 def compile(install_path, cache_dir):
     if not is_enabled():
         return
