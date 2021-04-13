@@ -848,7 +848,7 @@ def set_up_m2ee_client(vcap_data):
     activate_appdynamics(m2ee, vcap_data["application_name"])
     set_application_name(m2ee, vcap_data["application_name"])
     telegraf.update_config(m2ee, vcap_data["application_name"])
-    applicationinsights_config(mm2ee, vcap_data["application_name"])
+    applicationinsights_config(m2ee, vcap_data["application_name"])
     datadog.update_config(m2ee, vcap_data["application_name"])
     return m2ee
 
