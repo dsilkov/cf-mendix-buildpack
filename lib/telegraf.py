@@ -278,6 +278,14 @@ def update_config(m2ee, app_name):
         else:
             _write_http_output_config(http_configs)
 
+    if _get_appmetrics_aai() is not None:
+        try:
+            m2ee.config._conf["m2ee"]["javaopts"].append(
+                "-javaagent:{path}".format(
+                    path=os.path.abspath("appinsights/applicationinsights-agent-3.0.2.jar")
+                )
+            )
+
 
 def compile(install_path, cache_dir):
     if not is_enabled():
