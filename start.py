@@ -724,7 +724,7 @@ def applicationinsights_config(m2ee, app_name):
         return
     m2ee.config._conf["m2ee"]["javaopts"].append(
         "-javaagent:{path}".format(
-            path=os.path.abspath("appinsights/applicationinsights-agent-3.0.2.jar")
+            path=os.path.abspath("appinsights/applicationinsights-agent-3.1.0.jar")
         )
     )
 
