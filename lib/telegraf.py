@@ -164,6 +164,7 @@ def _write_aai_output_config():
     logger.debug("writing aai output config")
     aai_output = {
         "instrumentation_key": _get_appmetrics_aai(),
+        "enable_diagnostic_logging": "true",
     }
 
     _write_config("[[outputs.application_insights]]", aai_output)
