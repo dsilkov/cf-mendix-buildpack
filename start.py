@@ -346,8 +346,8 @@ def set_jvm_memory(m2ee_section, vcap, java_version):
     if java_version.startswith("7"):
         javaopts.append("-XX:MaxPermSize=256M")
     else:
-        javaopts.append("-XX:MaxMetaspaceSize=256M")
-
+        #javaopts.append("-XX:MaxMetaspaceSize=256M")
+         javaopts.append("-XX:+UseG1GC")
     logger.debug("Java heap size set to %s" % heap_size)
 
     if os.getenv("MALLOC_ARENA_MAX"):
