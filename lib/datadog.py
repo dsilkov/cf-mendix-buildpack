@@ -68,10 +68,10 @@ def enable_runtime_agent(m2ee):
                     "Could not parse json from MetricsAgentConfig",
                     exc_info=True,
                 )
-        jar = os.path.abspath(".local/datadog/{}".format(MX_AGENT_JAR))
-        m2ee.config._conf["m2ee"]["javaopts"].extend(
-            ["-javaagent:{}{}".format(jar, agent_config)]
-        )
+        #jar = os.path.abspath(".local/datadog/{}".format(MX_AGENT_JAR))
+        #m2ee.config._conf["m2ee"]["javaopts"].extend(
+        #    ["-javaagent:{}{}".format(jar, agent_config)]
+        #)
         # if not explicitly set, default to statsd
         m2ee.config._conf["mxruntime"].setdefault(
             "com.mendix.metrics.Type", "statsd"
