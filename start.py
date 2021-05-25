@@ -716,6 +716,17 @@ def activate_appdynamics(m2ee, app_name):
             )
         )
 
+def applicationinsights_config(m2ee, app_name):
+    if telegraf._get_appmetrics_aai() is None:
+        logger.debug(
+            "Skipping ApplicationInsights setup"
+        )
+        return
+    m2ee.config._conf["m2ee"]["javaopts"].append(
+        "-javaagent:{path}".format(
+            path=os.path.abspath("appinsights/applicationinsights-agent-3.1.0.jar")
+        )
+    )
 
 def activate_new_relic(m2ee, app_name):
     if buildpackutil.get_new_relic_license_key() is None:
@@ -837,6 +848,7 @@ def set_up_m2ee_client(vcap_data):
     activate_appdynamics(m2ee, vcap_data["application_name"])
     set_application_name(m2ee, vcap_data["application_name"])
     telegraf.update_config(m2ee, vcap_data["application_name"])
+    applicationinsights_config(m2ee, vcap_data["application_name"])
     datadog.update_config(m2ee, vcap_data["application_name"])
     return m2ee
 
